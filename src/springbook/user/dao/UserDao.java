@@ -4,14 +4,30 @@ import springbook.user.domain.User;
 
 import java.sql.*;
 
-public abstract class UserDao {
+//public abstract class UserDao {
+public class UserDao {
+//    private SimpleConnetionMacker simpleConnetionMacker;
+    private ConnectionMaker connectionMaker;
+
+//    public UserDao(SimpleConnetionMacker simpleConnetionMacker) {
+//        this.simpleConnetionMacker = simpleConnetionMacker;
+//    }
+
+//    public UserDao() {
+//        connectionMaker = new DConnectionMaker();
+//    }
+
+    public UserDao(ConnectionMaker connectionMaker) {
+        this.connectionMaker = connectionMaker;
+    }
 
     /**
      * main()을 이용한 DAO 테스트 코드
      */
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
+//        UserDao dao = new UserDao(new SimpleConnetionMacker());
         UserDao dao = new UserDao();
-        
+
         User user = new User();
         user.setId("shmoon");
         user.setName("문상후");
@@ -36,12 +52,14 @@ public abstract class UserDao {
 //        return DriverManager.getConnection("jdbc:mysql://localhost/sys", "root", "shmoon");
 //    }
 
-    public abstract Connection getConnection() throws ClassNotFoundException, SQLException;
+//    public abstract Connection getConnection() throws ClassNotFoundException, SQLException;
 
     public void add(User user) throws SQLException, ClassNotFoundException {
 //        Class.forName("com.mysql.jdbc.Driver");
 //        Connection c = DriverManager.getConnection("jdbc:mysql://localhost/sys", "root", "shmoon");
-        Connection c = getConnection();
+//        Connection c = getConnection();
+//        Connection c = simpleConnetionMacker.makeNewConnection();
+        Connection c = connectionMaker.makeConnection();
 
         PreparedStatement ps = c.prepareStatement("insert into users(id, name, password) values(?,?,?)");
         ps.setString(1, user.getId());
@@ -56,7 +74,9 @@ public abstract class UserDao {
     public User get(String id) throws SQLException, ClassNotFoundException {
 //        Class.forName("com.mysql.jdbc.Driver");
 //        Connection c = DriverManager.getConnection("jdbc:mysql://localhost/sys", "root", "shmoon");
-        Connection c = getConnection();
+//        Connection c = getConnection();
+//        Connection c = simpleConnetionMacker.makeNewConnection();
+        Connection c = connectionMaker.makeConnection();
 
         PreparedStatement ps = c.prepareStatement("select * from users where id = ?");
         ps.setString(1, id);

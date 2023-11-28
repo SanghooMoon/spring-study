@@ -26,7 +26,7 @@ public class UserDao {
      */
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 //        UserDao dao = new UserDao(new SimpleConnetionMacker());
-        UserDao dao = new UserDao();
+        UserDao dao = new UserDao(new DConnectionMaker());
 
         User user = new User();
         user.setId("shmoon");

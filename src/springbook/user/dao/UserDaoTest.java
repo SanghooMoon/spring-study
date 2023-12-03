@@ -15,7 +15,14 @@ public class UserDaoTest {
         ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
 
 //        UserDao dao = new DaoFactory().userDao();
+        // 스프링의 애플리케이션 컨텍스트에 등록된 Bean은 동일한 Object를 반환한다.
         UserDao dao = context.getBean("userDao", UserDao.class);
+        UserDao dao2 = context.getBean("userDao", UserDao.class);
+        UserDao dao3 = context.getBean("userDao", UserDao.class);
+
+        System.out.println(dao);
+        System.out.println(dao2);
+        System.out.println(dao3);
 
         User user = new User();
         user.setId("shmoon");

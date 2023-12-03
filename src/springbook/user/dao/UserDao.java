@@ -1,13 +1,27 @@
 package springbook.user.dao;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import springbook.user.domain.User;
 
 import java.sql.*;
 
 //public abstract class UserDao {
 public class UserDao {
+//    private static UserDao INSTANCE;
+//
+//    public static synchronized UserDao getInstance() {
+//        if (INSTANCE == null) INSTANCE = new UserDao(??);
+//        return INSTANCE;
+//    }
+
 //    private SimpleConnetionMacker simpleConnetionMacker;
     private ConnectionMaker connectionMaker;
+
+//    DaoFactory daoFactory = new DaoFactory();
+//    this.connectionMaker = daoFactory.connectionMaker();
+
+//    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
+//    this.connectionMaker = context.getBean("connectionMaker", ConnectionMaker.class);
 
 //    public UserDao(SimpleConnetionMacker simpleConnetionMacker) {
 //        this.simpleConnetionMacker = simpleConnetionMacker;

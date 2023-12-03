@@ -5,7 +5,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class DaoFactory {
-//    public UserDao userDao() {
+    public DaoFactory() {
+
+    }
+    //    public UserDao userDao() {
 //        return new UserDao(new DConnectionMaker());
 //    }
 //

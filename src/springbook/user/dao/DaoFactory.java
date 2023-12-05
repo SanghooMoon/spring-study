@@ -22,7 +22,10 @@ public class DaoFactory {
 
     @Bean
     public UserDao userDao() {
-        return new UserDao(connectionMaker());
+//        return new UserDao(connectionMaker());
+        UserDao userdao = new UserDao();
+        userdao.setConnectionMaker(connectionMaker());
+        return userdao;
     }
 
     public AccountDao accountDao() {
@@ -36,6 +39,8 @@ public class DaoFactory {
     @Bean
     public ConnectionMaker connectionMaker() {
         return new DConnectionMaker();
+//        return new LocalDBConnectionMaker();
+//        return new ProductionDBConnectionMaker();
     }
 
 }

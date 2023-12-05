@@ -31,7 +31,11 @@ public class UserDao {
 //        connectionMaker = new DConnectionMaker();
 //    }
 
-    public UserDao(ConnectionMaker connectionMaker) {
+//    public UserDao(ConnectionMaker connectionMaker) {
+//        this.connectionMaker = connectionMaker;
+//    }
+
+    public void setConnectionMaker(ConnectionMaker connectionMaker) {
         this.connectionMaker = connectionMaker;
     }
 

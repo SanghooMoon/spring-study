@@ -10,6 +10,9 @@ import springbook.user.domain.User;
 
 import java.sql.SQLException;
 
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
+
 public class UserDaoTest {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
@@ -62,8 +65,8 @@ public class UserDaoTest {
         System.out.println(user2.getName());
         System.out.println(user2.getPassword());
 
-        Assert.assertThat(user2.getName(), CoreMatchers.is(user.getName()));
-        Assert.assertThat(user2.getPassword(), CoreMatchers.is(user.getPassword()));
+        assertThat(user2.getName(), is(user.getName()));
+        assertThat(user2.getPassword(), is(user.getPassword()));
     }
 
 }
